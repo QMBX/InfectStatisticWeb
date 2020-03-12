@@ -1,0 +1,120 @@
+*
+{
+    margin:0;padding:0
+}
+html,body
+{
+    width:100%;
+    height:100%;
+}
+#wrap
+{
+    background-color: aliceblue;
+    width: 900px;
+    margin: 0 auto;
+}
+#header
+{
+    width: 900px;
+    background-color: aliceblue;
+    font-weight: bold;
+}
+#info1,#info2,#info3,#info4
+{
+    text-align: center;
+    font-size: medium;
+    float: left;
+    margin: 5px 0px;
+    width: 225px;
+    height: 100px;
+    color: black;
+    background-color: aliceblue;
+}
+#com1
+{
+    color: brown;
+}
+#com2
+{
+    color: red;
+}
+#com3
+{
+    color: blue;
+}
+#com4
+{
+    color: green;
+}
+#iden1
+{
+    color: brown;
+    font-weight: bold;
+    font-size: 200%;
+}
+#iden2
+{
+    color: red;
+    font-weight: bold;
+    font-size: 200%;
+}
+#iden3
+{
+    color: blue;
+    font-weight: bold;
+    font-size: 200%;
+}
+#iden4
+{
+    color: green;
+    font-weight: bold;
+    font-size: 200%;
+}
+#map
+{
+    width:900px;
+    height:500px;
+    margin: 0 auto;
+    background-color: #dddddd;
+}
+#line-head
+{
+    width:900px;
+    height:500px;
+    margin: 0 auto;
+    background-color: #dddddd;
+}
+#main
+{
+    width:898px;
+    height:450px;
+    margin: 0px auto;
+    border:1px solid #ddd;
+}
+#line
+{
+    width:900px;
+    height:450px;
+    margin-top: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    border:1px solid #ddd;
+}
+.changeBtn
+{
+    background-color: aliceblue;
+    width: 400px;
+    height: 40px;
+    margin: 5px 23px;
+}
+.changeBtn1
+{
+    background-color: aliceblue;
+    width: 210px;
+    height: 40px;
+    margin: 5px 5px;
+}
+.type
+{
+    font-weight: bold;
+}
