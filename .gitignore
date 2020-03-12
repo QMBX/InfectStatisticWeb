@@ -1,2 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
+
+# Eclipse project files
+Web/.settings/*
+Web/build/*
+Web/.classpath
+Web/.project
