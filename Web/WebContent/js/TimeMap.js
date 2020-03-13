@@ -131,5 +131,5 @@ function createTimeMap(id, data)
     		
    		var timeLineChart = echarts.init(document.getElementById(id));
    		timeLineChart.setOption(optionTimeLine);
-   		
+
 }
