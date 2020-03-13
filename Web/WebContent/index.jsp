@@ -72,7 +72,6 @@
         }
         
         createTimeMap('time',dataList);
-   		
    	</script>
 
 </body>

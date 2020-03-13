@@ -136,6 +136,8 @@ function createTimeMap(id, data)
        
    		timeLineChart.on('click', function (params) 
    		{ //点击时触发的事件
-           alert(params.name);
+			window.location.href = "province.html?province="+params.name;
         });
+   		
+   		
 }
