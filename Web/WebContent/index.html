@@ -60,10 +60,9 @@
 
     <div id="line">
     </div>
-    <button type="button" class="changeBtn1">新增趋势</button>
-    <button type="button" class="changeBtn1">疑似趋势</button>
+    <button type="button" class="changeBtn1">新增确诊趋势</button>
+    <button type="button" class="changeBtn1">累计确诊趋势</button>
     <button type="button" class="changeBtn1">治愈死亡</button>
-    <button type="button" class="changeBtn1">治愈率死亡率</button>
 </div>
 
 
@@ -260,7 +259,7 @@
     };
     myChart.setOption(option);
     myChart.on('click', function (params) { //点击时触发的事件
-        alert(params.name);
+        window.location.href = "province.html?province="+params.name;
     });
 
 
@@ -286,7 +285,6 @@
     };
 
 
-    var dataLine =
 
         optionLine = {
             title: {
@@ -318,7 +316,6 @@
             xAxis: {type: 'category'},
             yAxis: {gridIndex: 0},
             series: [
-                {type: 'line', smooth: false, seriesLayoutBy: 'row'},
                 {type: 'line', smooth: false, seriesLayoutBy: 'row'},
                 {type: 'line', smooth: false, seriesLayoutBy: 'row'},
                 {type: 'line', smooth: false, seriesLayoutBy: 'row'},
