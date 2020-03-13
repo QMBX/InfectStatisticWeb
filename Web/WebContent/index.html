@@ -8,6 +8,7 @@
     <link href="css/style.css" rel="stylesheet">
     <script src="js/echarts.js"></script>
     <script src="js/china.js"></script>
+    <script src="js/TimeMap.js"></script>
 </head>
 <body>
 <button id="btnClear" type="button" >清空数据</button>
@@ -67,6 +68,8 @@
 
 
 <script type="text/javascript">
+
+
     var dataList=[
         {name:"南海诸岛",value:0},
         {name: '北京', value: randomValue()},
@@ -255,7 +258,8 @@
         ],
 
     };
-    myChart.setOption(option);
+    // myChart.setOption(option);
+    createTimeMap('main',dataList);
     myChart.on('click', function (params) { //点击时触发的事件
         window.location.href = "province.html?province="+params.name;
     });
