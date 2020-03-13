@@ -36,9 +36,7 @@ function createTimeMap(id, data)
    				},
    				backgroundColor: '#D7D7D7',
    				title: {
-   					text: '全国主要城市空气质量',
-   					subtext: 'data from PM25.in',
-   					sublink: 'http://www.pm25.in',
+   					text: '全国疫情情况',
    					left: 'center',
    					textStyle: {
    						color: '#fff'
@@ -46,7 +44,7 @@ function createTimeMap(id, data)
    				},
    				tooltip: {
    						formatter:function(params,ticket, callback){
-   							return params.seriesName+'<br />'+params.name+'：'+params.value+'<br />'+params.tmp
+   							return params.seriesName+'<br />'+params.name+'：'+params.value
    						}//数据格式化
    					},
    				visualMap: {
@@ -106,7 +104,7 @@ function createTimeMap(id, data)
    			options: [
    				{ // 这是'2002-01-01' 对应的 option
    					title: {
-   						text: '2002年统计值'
+   						text: '全国疫情情况'
    					},
    					series: [
    						{data: dataList}, // 系列一的数据
@@ -133,9 +131,5 @@ function createTimeMap(id, data)
     		
    		var timeLineChart = echarts.init(document.getElementById(id));
    		timeLineChart.setOption(optionTimeLine);
-       
-   		timeLineChart.on('click', function (params) 
-   		{ //点击时触发的事件
-           alert(params.name);
-        });
+   		
 }
