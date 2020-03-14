@@ -61,8 +61,14 @@ function createTimeMap(id, data)
 			},
 			visualMap :
 			{
-				min : 0, //最小值
-				max : 1500, //最大值
+				pieces : 
+				[
+				    {gt : 10000},
+				    {gt : 1000, lte : 9999},
+				    {gt : 100, lte : 999},
+				    {gt : 10, lte : 99},
+				    {lte : 9},               // (-Infinity, 5)
+				],
 				left : 'left',
 				bottom :'10%',
 				splitNumber :5, //分成 5 段数据
