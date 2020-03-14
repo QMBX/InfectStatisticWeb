@@ -124,38 +124,7 @@ function createTimeMap(id, data)
 				}
 			],
 		},
-		options: [
-			{ // 这是'2002-01-01' 对应的 option
-				title :
-				{
-					text : '全国疫情情况'
-				},
-				series :
-				[
-					{data : dataList}, // 系列一的数据
-				]
-			},
-			{ // 这是'2003-01-01' 对应的 option
-				title :
-				{
-					text : '2003年统计值'
-				},
-				series :
-				[
-					{data : dataList},
-				]
-			},
-			{ // 这是'2004-01-01' 对应的 option
-				title :
-				{
-					text : '2004年统计值'
-				},
-				series :
-				[
-					{data : dataList},
-				]
-			}
-		]
+		options: []
     };
     		
 	var timeLineChart = echarts.init(document.getElementById(id));
