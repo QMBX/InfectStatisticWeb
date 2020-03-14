@@ -57,7 +57,7 @@
     </div>
     <button type="button" class="changeBtn1">新增确诊趋势</button>
     <button type="button" class="changeBtn1">累计确诊趋势</button>
-    <button type="button" class="changeBtn1">治愈死亡</button>
+    <button type="button" class="changeBtn1">治愈/死亡</button>
 </div>
 
 
@@ -102,12 +102,14 @@
                 ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
                 ['新增确诊', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
                 ['累计确诊', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
-                ['治愈死亡', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
+                ['治愈', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],
+                ['死亡', 20, 30, 10, 20, 40, 50],
             ]
         },
         xAxis: {type: 'category'},
         yAxis: {gridIndex: 0},
         series: [
+            {type: 'line', smooth: false, seriesLayoutBy: 'row'},
             {type: 'line', smooth: false, seriesLayoutBy: 'row'},
             {type: 'line', smooth: false, seriesLayoutBy: 'row'},
             {type: 'line', smooth: false, seriesLayoutBy: 'row'},
