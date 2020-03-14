@@ -1,11 +1,17 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.ProvinceDAO;
+import pojo.Province;
 
 /**
  * Servlet implementation class China
@@ -31,25 +37,12 @@ public class ChinaServlet extends HttpServlet
 	{
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		List<User> users = null;
-		String sql = "select * from User";
-        try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
-        	User user = null;
-            users = new ArrayList<User>();
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-            	user = new User();
-            	user.setId(rs.getInt("id"));
-            	user.setName(rs.getString("name"));
-            	users.add(user);
-            }
-        } catch (SQLException e) {
 
-            e.printStackTrace();
-        }
+		ProvinceDAO provinceDAO = new ProvinceDAO();
+		List<Province> provinces = provinceDAO.listLast();
 		
 		
-//		request.setAttribute("users", users);
+		request.setAttribute("provinces", provinces);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 

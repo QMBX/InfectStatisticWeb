@@ -11,9 +11,12 @@ import servlet.DBUtil;
 
 public class ProvinceDAO
 {
+	private final static int PROVINCES = 34;
+	
 	public List<Province> listLast() {
 		List<Province> provinces = null;
-		String sql = "SELECT * FROM PROVINCE";
+		String sql = " SELECT * FROM province b1 "
+			+ " WHERE (SELECT COUNT(1) FROM province b2 WHERE b1.name = b2.name AND b2.date > b1.date) < 1; ";
         try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
         	Province user = null;
         	provinces = new ArrayList<Province>();
@@ -28,7 +31,7 @@ public class ProvinceDAO
         }
 		
 		
-       return users;
+       return provinces;
 
     }
 }
