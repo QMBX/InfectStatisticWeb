@@ -27,6 +27,7 @@ function createLineChart(id, data)
 	            {type: 'line', smooth: false, seriesLayoutBy: 'row'},
 	            {type: 'line', smooth: false, seriesLayoutBy: 'row'},
 	            {type: 'line', smooth: false, seriesLayoutBy: 'row'},
+                {type: 'line', smooth: false, seriesLayoutBy: 'row'},
 	        ]
 	    };
 	    var lineChart = echarts.init(document.getElementById(id));
