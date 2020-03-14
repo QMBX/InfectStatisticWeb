@@ -66,11 +66,11 @@
             {name: '香港', value: randomValue()},
             {name: '澳门', value: randomValue()}
         ];
-        
+		//...
         function randomValue() {
-            return Math.round(  Math.random()*1000);
+            return Math.round(Math.random()*1000);
         }
-        
+
         createTimeMap('time',dataList);
    	</script>
 
