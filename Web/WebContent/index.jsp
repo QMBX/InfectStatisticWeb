@@ -7,12 +7,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>中国疫情数据</title>
-    <link href="css/style.css" rel="stylesheet">
+    <title>Insert title here</title>
     <script src="js/echarts.js"></script>
     <script src="js/china.js"></script>
     <script src="js/TimeMap.js"></script>
-    <script src="js/LineChart.js"></script>
     <style>
         *{margin:0;padding:0}
         html,body{
@@ -29,56 +27,56 @@
 
 </head>
 <body>
-	<div id="wrap">
-	    <div id="header">
-	        截止 2020-02-XX XX:XX 全国数据统计
-	    </div>
-	    <div id="info1">
-	        <p>
-	            较昨日
-	            <span id="com1">-2408</span>
-	        </p>
-	        <p id="iden1">47502</p>
-	        <p class="type">现存确诊</p>
-	    </div>
-	    <div id="info2">
-	        <p>
-	            较昨日
-	            <span id="com2">+530</span>
-	        </p>
-	        <p id="iden2">2824</p>
-	        <p class="type">现存疑似</p>
-	    </div>
-	    <div id="info3">
-	        <p>
-	            较昨日
-	            <span id="com3">+71</span>
-	        </p>
-	        <p id="iden3">2666</p>
-	        <p class="type">死亡</p>
-	    </div>
-	    <div id="info4">
-	        <p>
-	            较昨日
-	            <span id="com4">+2860</span>
-	        </p>
-	        <p id="iden4">27617</p>
-	        <p class="type">治愈</p>
-	    </div>
-	</div>
-	<div id="map">
-	    <button type="button" class="changeBtn">现有确诊</button>
-	    <button type="button" class="changeBtn">累计确诊</button>
-	    <div id="main">
-	    </div>
-	</div>
-	<div id="line-head">
-	
-	    <div id="line">
-	    </div>
-	</div>
+
+    <div id="time">
+    </div>
 
 	<script type="text/javascript">
+<<<<<<< HEAD
+        var dataList = [
+            {name:"南海诸岛",value:0},
+            {name: '北京', value: randomValue()},
+            {name: '天津', value: randomValue()},
+            {name: '上海', value: randomValue()},
+            {name: '重庆', value: randomValue()},
+            {name: '河北', value: randomValue()},
+            {name: '河南', value: randomValue()},
+            {name: '云南', value: randomValue()},
+            {name: '辽宁', value: randomValue()},
+            {name: '黑龙江', value: randomValue()},
+            {name: '湖南', value: randomValue()},
+            {name: '安徽', value: randomValue()},
+            {name: '山东', value: randomValue()},
+            {name: '新疆', value: randomValue()},
+            {name: '江苏', value: randomValue()},
+            {name: '浙江', value: randomValue()},
+            {name: '江西', value: randomValue()},
+            {name: '湖北', value: randomValue()},
+            {name: '广西', value: randomValue()},
+            {name: '甘肃', value: randomValue()},
+            {name: '山西', value: randomValue()},
+            {name: '内蒙古', value: randomValue()},
+            {name: '陕西', value: randomValue()},
+            {name: '吉林', value: randomValue()},
+            {name: '福建', value: randomValue()},
+            {name: '贵州', value: randomValue()},
+            {name: '广东', value: randomValue()},
+            {name: '青海', value: randomValue()},
+            {name: '西藏', value: randomValue()},
+            {name: '四川', value: randomValue()},
+            {name: '宁夏', value: randomValue()},
+            {name: '海南', value: randomValue()},
+            {name: '台湾', value: randomValue()},
+            {name: '香港', value: randomValue()},
+            {name: '澳门', value: randomValue()}
+        ];
+        function randomValue() {
+            return Math.round(Math.random()*1000);
+        }
+
+        createTimeMap('time',dataList);
+   	</script>
+=======
 	
 	 
 	    var dataList=[
@@ -180,6 +178,7 @@
 	    
 	    var lineChart = createLineChart('line', dataLine);
 	</script>
+>>>>>>> ccfee10585920e79589d06489289522a3519febd
 
 </body>
 </html>
