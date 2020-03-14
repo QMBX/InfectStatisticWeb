@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.ChinaDAO;
 import dao.ProvinceDAO;
+import pojo.China;
 import pojo.Province;
 
 /**
@@ -41,8 +43,10 @@ public class ChinaServlet extends HttpServlet
 		ProvinceDAO provinceDAO = new ProvinceDAO();
 		List<Province> provinces = provinceDAO.listLast();
 		
-		
+		ChinaDAO chinaDAO = new ChinaDAO();
+		List<China> chinas = chinaDAO.listSomeDay(10);
 		request.setAttribute("provinces", provinces);
+		request.setAttribute("chinas", chinas);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 

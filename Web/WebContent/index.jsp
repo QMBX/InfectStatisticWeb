@@ -1,4 +1,6 @@
 <%@page import="pojo.Province"%>
+<%@page import="java.text.SimpleDateFormat,java.util.Date,java.util.Calendar"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*"%>
 <!DOCTYPE html>
@@ -153,7 +155,23 @@
 	    };
 	    
 	    var dataLine = [
-	        ['product', '2012', '2013', '2014', '2015', '2016', '2017'],
+	    	
+	    	['product', 
+	    	<%
+	    		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd");
+	    		Date currentTime = new Date();
+	    		Calendar calendar = Calendar.getInstance();
+	    		calendar.setTime(currentTime);
+	    		calendar.add(calendar.DATE, -1);
+	    		for(int i = 0; i < 10; i++,calendar.add(calendar.DATE, -1))
+	    		{
+	    	%>
+	    	, "<%= simpleDateFormat.format(calendar.getTime()) %>"
+	    	<%
+	    		}
+	    	%>
+	    	],
+	        //['product', '2012', '2013', '2014', '2015', '2016', '2017'],
 	        ['新增确诊', 41.1, 30.4, 65.1, 53.3, 83.8, 98.7],
 	        ['累计确诊', 86.5, 92.1, 85.7, 83.1, 73.4, 55.1],
 	        ['治愈', 24.1, 67.2, 79.5, 86.4, 65.2, 82.5],

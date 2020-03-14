@@ -1,4 +1,4 @@
-package servlet;
+package util;
 
 
 import java.sql.Connection;
