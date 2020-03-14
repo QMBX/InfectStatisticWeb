@@ -3,11 +3,11 @@ package pojo;
 public class China
 {
 	private String date;
-	private String confirmedNum;
-	private String suspectedNum;
-	private String curesNum;
-	private String deathsNum;
-	private String treating;
+	private int confirmedNum;
+	private int suspectedNum;
+	private int curesNum;
+	private int deathsNum;
+	private int treating;
 	public String getDate()
 	{
 		return date;
@@ -16,35 +16,35 @@ public class China
 	{
 		this.date = date;
 	}
-	public String getConfirmedNum()
+	public int getConfirmedNum()
 	{
 		return confirmedNum;
 	}
-	public void setConfirmedNum(String confirmedNum)
+	public void setConfirmedNum(int confirmedNum)
 	{
 		this.confirmedNum = confirmedNum;
 	}
-	public String getSuspectedNum()
+	public int getSuspectedNum()
 	{
 		return suspectedNum;
 	}
-	public void setSuspectedNum(String suspectedNum)
+	public void setSuspectedNum(int suspectedNum)
 	{
 		this.suspectedNum = suspectedNum;
 	}
-	public String getDeathsNum()
+	public int getDeathsNum()
 	{
 		return deathsNum;
 	}
-	public void setDeathsNum(String deathsNum)
+	public void setDeathsNum(int deathsNum)
 	{
 		this.deathsNum = deathsNum;
 	}
-	public String getTreating()
+	public int getTreating()
 	{
 		return treating;
 	}
-	public void setTreating(String treating)
+	public void setTreating(int treating)
 	{
 		this.treating = treating;
 	}
