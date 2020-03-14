@@ -44,7 +44,7 @@ public class ChinaServlet extends HttpServlet
 		List<Province> provinces = provinceDAO.listLast();
 		
 		ChinaDAO chinaDAO = new ChinaDAO();
-		List<China> chinas = chinaDAO.listSomeDay(10);
+		List<China> chinas = chinaDAO.listSomeDay(11);
 		request.setAttribute("provinces", provinces);
 		request.setAttribute("chinas", chinas);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);

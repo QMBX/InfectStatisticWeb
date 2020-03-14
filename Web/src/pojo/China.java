@@ -1,50 +1,60 @@
 package pojo;
 
+import java.sql.Date;
+
 public class China
 {
-	private String date;
-	private String confirmedNum;
-	private String suspectedNum;
-	private String curesNum;
-	private String deathsNum;
-	private String treating;
-	public String getDate()
+	private Date date;
+	private int confirmedNum;
+	private int suspectedNum;
+	private int curesNum;
+	private int deathsNum;
+	private int treating;
+	public Date getDate()
 	{
 		return date;
 	}
-	public void setDate(String date)
+	public void setDate(Date date)
 	{
 		this.date = date;
 	}
-	public String getConfirmedNum()
+	public int getConfirmedNum()
 	{
 		return confirmedNum;
 	}
-	public void setConfirmedNum(String confirmedNum)
+	public void setConfirmedNum(int confirmedNum)
 	{
 		this.confirmedNum = confirmedNum;
 	}
-	public String getSuspectedNum()
+	public int getSuspectedNum()
 	{
 		return suspectedNum;
 	}
-	public void setSuspectedNum(String suspectedNum)
+	public void setSuspectedNum(int suspectedNum)
 	{
 		this.suspectedNum = suspectedNum;
 	}
-	public String getDeathsNum()
+	public int getCuresNum()
+	{
+		return curesNum;
+	}
+	public void setCuresNum(int curesNum)
+	{
+		this.curesNum = curesNum;
+	}
+	public int getDeathsNum()
 	{
 		return deathsNum;
 	}
-	public void setDeathsNum(String deathsNum)
+	public void setDeathsNum(int deathsNum)
 	{
 		this.deathsNum = deathsNum;
 	}
-	public String getTreating()
+	public int getTreating()
 	{
 		return treating;
 	}
-	public void setTreating(String treating)
+	public void setTreating(int treating)
 	{
 		this.treating = treating;
 	}
