@@ -1,12 +1,15 @@
 package pojo;
 
+import java.sql.Date;
+
 public class Province
 {
 	private String name;
-	private String date;
-	private String confirmedNum;
-	private String curesNum;
-	private String treatingNum;
+	private Date date;
+	private int confirmedNum;
+	private int curesNum;
+	private int deathsNum;
+	private int treatingNum;
 	
 	public String getName()
 	{
@@ -18,41 +21,52 @@ public class Province
 		this.name = name;
 	}
 	
-	public String getDate()
+	public Date getDate()
 	{
 		return date;
 	}
 	
-	public void setDate(String date)
+	public void setDate(Date date)
 	{
 		this.date = date;
 	}
 	
-	public String getConfirmedNum()
+	public int getConfirmedNum()
 	{
 		return confirmedNum;
 	}
 	
-	public void setConfirmedNum(String confirmedNum)
+	public void setConfirmedNum(int confirmedNum)
 	{
 		this.confirmedNum = confirmedNum;
 	}
 	
-	public String getCuresNum()
+	public int getCuresNum()
 	{
 		return curesNum;
 	}
 	
-	public void setCuresNum(String curesNum)
+	public void setCuresNum(int curesNum)
 	{
 		this.curesNum = curesNum;
 	}
-	public String getTreatingNum()
+	
+	public int getDeathsNum()
+	{
+		return deathsNum;
+	}
+	
+	public void setDeathsNum(int deathsNum)
+	{
+		this.deathsNum = deathsNum;
+	}
+	
+	public int getTreatingNum()
 	{
 		return treatingNum;
 	}
 	
-	public void setTreatingNum(String treatingNum)
+	public void setTreatingNum(int treatingNum)
 	{
 		this.treatingNum = treatingNum;
 	}
