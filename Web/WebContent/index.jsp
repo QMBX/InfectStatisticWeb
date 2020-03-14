@@ -85,26 +85,11 @@
 		 	%>
 	    ];
 	    
-	    
 	    var timeChart = createTimeMap('main',dataList);
 	    timeChart.on('click', function (params) { //点击时触发的事件
 	        window.location.href = "province.html?province="+params.name;
 	    });
-	
-	    optionClear =
-	    {
-	        dataset :
-	        {
-	            source: dataList2,
-	        },
-	    };
-	    optionReset =
-	    {
-	        dataset :
-	        {
-	            source: dataList,
-	        },
-	    };
+
 	    
 	    var dataLine = 
 	    [
@@ -126,52 +111,55 @@
 	    		}
 	    	%>
 	    	],
-	        ['新增确诊' 
-	        <% 
-	        	for(int i = days-1; i >= 0; i--)
-	        	{
-	        %>
-	        	,<%= chinas.get(i).getConfirmedNum() - chinas.get(i+1).getConfirmedNum() %>
-	        <%
-	        	}
-	        %>
-	        ],
-	        
-	        ['累计确诊' 
-	        <% 
-        		for(int i = days-1; i >= 0; i--)
-	        	{
-	        %>
-	        	,<%= chinas.get(i).getConfirmedNum() %>
-	        <%
-	        	}
-	        %>
-	        ],
-	        
-			['治愈' 
-	        <% 
-        		for(int i = days-1; i >= 0; i--)
-	        	{
-	        %>
-	        	,<%= chinas.get(i).getCuresNum() %>
-	        <%
-	        	}
-	        %>
-	        ],
+	    	['新增确诊' 
+		        <% 
+		        	for(int i = days-1; i >= 0; i--)
+		        	{
+		        %>
+		        	,<%= chinas.get(i).getConfirmedNum() - chinas.get(i+1).getConfirmedNum() %>
+		        <%
+		        	}
+		        %>
+		        ],
+		        
+		        ['累计确诊' 
+		        <% 
+	        		for(int i = days-1; i >= 0; i--)
+		        	{
+		        %>
+		        	,<%= chinas.get(i).getConfirmedNum() %>
+		        <%
+		        	}
+		        %>
+		        ],
+		        
+				['治愈' 
+		        <% 
+	        		for(int i = days-1; i >= 0; i--)
+		        	{
+		        %>
+		        	,<%= chinas.get(i).getCuresNum() %>
+		        <%
+		        	}
+		        %>
+		        ],
 
-			['死亡' 
-	        <% 
-        		for(int i = days-1; i >= 0; i--)
-	        	{
-	        %>
-	        	,<%= chinas.get(i).getDeathsNum() %>
-	        <%
-	        	}
-	        %>
-	        ],
-	    ];
+				['死亡' 
+		        <% 
+	        		for(int i = days-1; i >= 0; i--)
+		        	{
+		        %>
+		        	,<%= chinas.get(i).getDeathsNum() %>
+		        <%
+		        	}
+		        %>
+		        ],
+		    ];
+	    
+
 	    
 	    var lineChart = createLineChart('line', dataLine);
+
 	</script>
 
 </body>
