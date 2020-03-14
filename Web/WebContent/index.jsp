@@ -68,7 +68,7 @@
         ];
         
         function randomValue() {
-            return Math.round(Math.random()*1000);
+            return Math.round(  Math.random()*1000);
         }
         
         createTimeMap('time',dataList);
