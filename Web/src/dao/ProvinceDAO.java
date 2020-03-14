@@ -13,15 +13,18 @@ public class ProvinceDAO
 {
 	private final static int PROVINCES = 34;
 	
-	public List<Province> listLast() {
+	public List<Province> listLast()
+	{
 		List<Province> provinces = null;
 		String sql = " SELECT * FROM province b1 "
 			+ " WHERE (SELECT COUNT(1) FROM province b2 WHERE b1.name = b2.name AND b2.date > b1.date) < 1; ";
-        try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
+        try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql))
+        {
         	Province province = null;
         	provinces = new ArrayList<Province>();
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            while (rs.next())
+            {
             	province = new Province();
             	province.setName(rs.getString("name"));
             	province.setDate(rs.getDate("date"));
@@ -32,8 +35,9 @@ public class ProvinceDAO
             	
             	provinces.add(province);
             }
-        } catch (SQLException e) {
-
+        } 
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
 		
@@ -42,15 +46,23 @@ public class ProvinceDAO
 
     }
 	
-	public List<Province> listSomeDay() {
-		List<Province> provinces = null;
+	public List<List<Province>> listSomeDay(int num)
+	{
+		List<List<Province>> provinces = null;
 		String sql = " SELECT * FROM province b1 "
-			+ " WHERE (SELECT COUNT(1) FROM province b2 WHERE b1.name = b2.name AND b2.date > b1.date) < 1; ";
-        try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql)) {
+			+ " WHERE (SELECT COUNT(1) FROM province b2 WHERE b1.name = b2.name AND b2.date > b1.date) < " + num + " ;";
+        try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql))
+        {
         	Province province = null;
-        	provinces = new ArrayList<Province>();
+        	provinces = new ArrayList<>();
+        	
+        	for(int i = 0; i < num; i++)
+        		provinces.add(new ArrayList<>());
+        	
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
+            int index = 0;
+            while (rs.next())
+            {
             	province = new Province();
             	province.setName(rs.getString("name"));
             	province.setDate(rs.getDate("date"));
@@ -59,10 +71,12 @@ public class ProvinceDAO
             	province.setDeathsNum(rs.getInt("deathsNum"));
             	province.setTreatingNum(rs.getInt("treatingNum"));
             	
-            	provinces.add(province);
+            	provinces.get(index % 10).add(province);
+            	index++;
             }
-        } catch (SQLException e) {
-
+        }
+        catch (SQLException e)
+        {
             e.printStackTrace();
         }
 		
