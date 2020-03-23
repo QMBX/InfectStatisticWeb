@@ -21,6 +21,7 @@
     <div id="header">
     
     <%
+ 		request.setCharacterEncoding("utf-8");
     	List<China> chinaData = (List)request.getAttribute("chinas");
     	China chinaToday = chinaData.get(0);
     	China chinaYesterday = chinaData.get(1);
@@ -83,7 +84,6 @@
 		var data = {
 			timeline : [
 				<% 
-				 	request.setCharacterEncoding("utf-8");
 				 	List<List<Province>> provinces = (List)request.getAttribute("provinces");
 				 	if (provinces != null)
 				 	{
@@ -177,7 +177,7 @@
 	    
 	    var timeChart = createTimeMap('main',dataList);
 	    timeChart.on('click', function (params) { //点击时触发的事件
-	        window.location.href = "province.html?province="+params.name;
+	        window.location.href = "province?province="+params.name;
 	    });
 	    
 	    var optionTime = {
