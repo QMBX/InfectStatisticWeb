@@ -71,7 +71,7 @@ public class ProvinceDAO
             	province.setDeathsNum(rs.getInt("deathsNum"));
             	province.setTreatingNum(rs.getInt("treatingNum"));
             	
-            	provinces.get(index % 10).add(province);
+            	provinces.get(index % num).add(province);
             	index++;
             }
         }
