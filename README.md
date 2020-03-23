@@ -1,6 +1,14 @@
 # InfectStatisticWeb
 某次疫情统计可视化
 
+# 作业连接
+[结对第二次作业——某次疫情统计可视化的实现](https://edu.cnblogs.com/campus/fzu/2020SpringW/homework/10456)
+
+# 结对学号
+221701317 221701337
+# 项目介绍
+疫情地图可视化
+
 # 构建和运行
  + #### 运行环境
     Tomcat9.0以上版本, eclipse-jee, Java EE 11, MySQL 8.0
