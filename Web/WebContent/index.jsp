@@ -55,8 +55,8 @@
     </div>
 </div>
 <div id="map">
-    <button type="button" class="changeBtn">现有确诊</button>
-    <button type="button" class="changeBtn">累计确诊</button>
+    <button id='btnCur' type="button" class="changeBtn">现有确诊</button>
+    <button id='btnSum' type="button" class="changeBtn">累计确诊</button>
     <div id="main">
     </div>
 </div>
@@ -68,20 +68,99 @@
 
 
 	<script type="text/javascript">
-	
+		
+		var data = {
+			timeline : [
+				<% 
+				 	request.setCharacterEncoding("utf-8");
+				 	List<List<Province>> provinces = (List)request.getAttribute("provinces");
+				 	if (provinces != null)
+				 	{
+				 		for(List<Province> province : provinces)
+				 		{
+			 	%>
+			 		'<%= (province.get(0).getDate().getMonth()+1)+"-"+ province.get(0).getDate().getDate()%>',
+			 	<% 
+			 			}
+				 	}
+			 	%>
+			],
+			series : [
+				<%
+					for(int i = 0; i < provinces.size(); i++)
+					{
+				%>
+				[
+					{name:"南海诸岛",value:0},
+				<%
+						List<Province> oneDay = provinces.get(i);
+						for(Province province : oneDay)
+						{
+				%>
+					{name: "<%= province.getName() %>", value : <%= province.getTreatingNum() %>},
+				<%
+						}
+				%>
+				],
+				<%
+					}
+				%>
+			],
+		}
+		
+		var dataSum = {
+				timeline : [
+					<% 
+					 	request.setCharacterEncoding("utf-8");
+					 	if (provinces != null)
+					 	{
+					 		for(List<Province> province : provinces)
+					 		{
+				 	%>
+				 		'<%= (province.get(0).getDate().getMonth()+1)+"-"+ province.get(0).getDate().getDate()%>',
+				 	<% 
+				 			}
+					 	}
+				 	%>
+				],
+				series : [
+					<%
+						for(int i = 0; i < provinces.size(); i++)
+						{
+					%>
+					[
+						{name:"南海诸岛",value:0},
+					<%
+							List<Province> oneDay = provinces.get(i);
+							for(Province province : oneDay)
+							{
+					%>
+						{name: "<%= province.getName() %>", value : <%= province.getConfirmedNum() %>},
+					<%
+							}
+					%>
+					],
+					<%
+						}
+					%>
+				],
+			}
 	 
-	    var dataList=[
+	    var dataList = [
 	    	{name:"南海诸岛",value:0},
 	    	<% 
-		 	request.setCharacterEncoding("utf-8");
-		 	List<Province> provinces = (List)request.getAttribute("provinces");
-		 	if (provinces != null)
-		 		for(Province province : provinces)
-		 		{
+			 	request.setCharacterEncoding("utf-8");
+			 	//List<Province> provinces = (List)request.getAttribute("provinces");
+			 	if (provinces != null)
+			 	{
+			 		List<Province> todayProvinces = provinces.get(provinces.size() - 1);
+			 		for(Province province : todayProvinces)
+			 		{
 		 	%>
-		 		{name: "<%= province.getName() %>", value : <%= province.getTreatingNum() %>},
+		 			{name: "<%= province.getName() %>", value : <%= province.getTreatingNum() %>},
 		 	<% 
-		 		}
+		 			}
+			 	}
 		 	%>
 	    ];
 	    
@@ -89,7 +168,63 @@
 	    timeChart.on('click', function (params) { //点击时触发的事件
 	        window.location.href = "province.html?province="+params.name;
 	    });
+	    
+	    var optionTime = {
+	    	baseOption : {
+	    		timeline : {
+	    			data : [],
+	    		}
+	    	},
+	    	options : [],
+	    };
+	    var optionTimeSum = {
+	    	baseOption : {
+	    		timeline : {
+	    			data : [],
+	    		}
+	    	},
+	    	options : [],
+	    };
 
+	    for (var n = 0; n < data.timeline.length; n++)
+		{
+	    	optionTime.baseOption.timeline.data.push(data.timeline[n]);
+	    	optionTime.options.push({
+	            title :
+	            {
+	                show: true,
+	                'text': data.timeline[n] + '日全国各省现有确诊',
+	            },
+	            series :
+	            {
+	                name: '现有确诊',
+	                data: data.series[n],
+	                type : 'map',
+					geoIndex : 0,
+	            }
+	        });
+	    }
+	    timeChart.setOption(optionTime);
+	    
+	    for (var n = 0; n < data.timeline.length; n++)
+		{
+	    	optionTimeSum.baseOption.timeline.data.push(dataSum.timeline[n]);
+	    	optionTimeSum.options.push({
+	            title :
+	            {
+	                show: true,
+	                'text': dataSum.timeline[n] + '日全国各省累计确诊',
+	            },
+	            series :
+	            {
+	                name: '累计确诊',
+	                data: dataSum.series[n],
+	                type : 'map',
+					geoIndex : 0,
+	            }
+	        });
+	    }
+	    timeChart.setOption(optionTime);
 	    
 	    var dataLine = 
 	    [
@@ -160,6 +295,15 @@
 	    
 	    var lineChart = createLineChart('line', dataLine);
 
+	    
+	    document.getElementById('btnCur').onclick = function()
+	    {
+	    	timeChart.setOption(optionTime);
+	    }
+	    document.getElementById('btnSum').onclick = function()
+	    {
+	    	timeChart.setOption(optionTimeSum);
+	    }
 	</script>
 
 </body>
