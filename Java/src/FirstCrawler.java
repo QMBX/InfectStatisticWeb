@@ -24,15 +24,12 @@ public class FirstCrawler
     {
          //URL
     	String url = "https://i.snssdk.com/forum/home/v1/info/?activeWidget=1&forum_id=1656784762444839";
-
-        String resultBody = Jsoup.connect(url).
+    	String resultBody = Jsoup.connect(url).
 
         userAgent(USER_AGENT).header("Host", HOST).header("Referer", REFERER).execute().body();
 
         JSONObject jsonObject = JSON.parseObject(resultBody);
-
         String ncovStringList = jsonObject.getJSONObject("forum").getJSONObject("extra").getString("ncov_string_list");
-
         JSONObject ncovListObj = JSON.parseObject(ncovStringList);
         
         init(ncovListObj);
@@ -44,16 +41,15 @@ public class FirstCrawler
     {
     	provinceInit(ncovListObj);
     	nationInit(ncovListObj);
-    	
     }
     
     public static void provinceInit(JSONObject ncovListObj)
     {
-
     	//province表的数据
     	JSONArray provincesdata = ncovListObj.getJSONArray("provinces");
     	String name, date, treatingNum, confirmedNum, curesNum, deathsNum;
     	String confirmedIncrNum, confirmedIncrStr, curesIncrStr, deathsIncrStr, treatingIncrStr; 
+    	int insertNums = 0;
     	
     	String sql = "INSERT INTO province VALUES(?, ?, ?, ?, ?, ?)";
     	try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql))
@@ -86,25 +82,29 @@ public class FirstCrawler
 		        		ps.setString(5, deathsNum);
 		        		ps.setString(6, treatingNum);
 		        		ps.execute();
+		        		insertNums++;
 		        	}
 		        	catch (MySQLIntegrityConstraintViolationException e)
 		        	{
+		        		//e.printStackTrace();
 		            }
 	        	}
 	    	}
     	}
     	catch (SQLException e)
     	{
-
             e.printStackTrace();
         }
+    	System.out.print("省份数据收集完毕,新增" + insertNums + "条数据\n");
     }
     
     public static void nationInit(JSONObject ncovListObj)
     {
+    	
     	//nation表的数据
     	JSONArray nationdata = ncovListObj.getJSONArray("nationwide");
     	String date, confirmedNum, suspectedNum, curesNum, deathsNum, treatingNum;
+    	int insertNums = 0;
     	
     	String sql = "INSERT INTO nation VALUES(?, ?, ?, ?, ?, ?)";
     	try (Connection c = DBUtil.getConnection(); PreparedStatement ps = c.prepareStatement(sql))
@@ -128,9 +128,12 @@ public class FirstCrawler
 		        	ps.setString(4, curesNum);
 		        	ps.setString(5, deathsNum);
 		        	ps.setString(6, treatingNum);
+		        	ps.execute();
+		        	insertNums++;
 	        	}
 	        	catch (MySQLIntegrityConstraintViolationException e)
 	        	{
+	        		
 	            }
 	        }
         }
@@ -138,6 +141,7 @@ public class FirstCrawler
     	{
             e.printStackTrace();
         }
+    	System.out.print("全国数据收集完毕,新增" + insertNums + "条数据\n");
     }
     
     
