@@ -41,10 +41,13 @@ public class ChinaServlet extends HttpServlet
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		ProvinceDAO provinceDAO = new ProvinceDAO();
 		
-		List<Province> provinces = provinceDAO.listLast();
+		int showDay = 10;
+		
+		List<List<Province>> provinces = provinceDAO.listSomeDay(showDay);
 		
 		ChinaDAO chinaDAO = new ChinaDAO();
-		List<China> chinas = chinaDAO.listSomeDay(11);
+		//新增数量由两天数量计算得到，所以需要多一天的数据
+		List<China> chinas = chinaDAO.listSomeDay(showDay + 1);
 		request.setAttribute("provinces", provinces);
 		request.setAttribute("chinas", chinas);
 		request.getRequestDispatcher("/index.jsp").forward(request, response);

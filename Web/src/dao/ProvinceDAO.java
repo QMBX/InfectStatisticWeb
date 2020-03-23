@@ -71,7 +71,7 @@ public class ProvinceDAO
             	province.setDeathsNum(rs.getInt("deathsNum"));
             	province.setTreatingNum(rs.getInt("treatingNum"));
             	
-            	provinces.get(index % 10).add(province);
+            	provinces.get(index % num).add(province);
             	index++;
             }
         }
@@ -82,6 +82,39 @@ public class ProvinceDAO
 		
 		
        return provinces;
+
+    }
+	
+	public List<Province> listByProvince(String name)
+	{
+		List<Province> allDayData = null;
+		String sql = "SELECT * FROM province WHERE name = '" + name + "' ;";
+		System.out.println(sql);
+        try (Connection c = DBUtil.getConnection();PreparedStatement ps = c.prepareStatement(sql))
+        {
+        	Province province = null;
+        	allDayData = new ArrayList<>();
+        	
+            ResultSet rs = ps.executeQuery();
+            while (rs.next())
+            {
+            	province = new Province();
+            	province.setName(rs.getString("name"));
+            	province.setDate(rs.getDate("date"));
+            	province.setConfirmedNum(rs.getInt("confirmedNum"));
+            	province.setCuresNum(rs.getInt("curesNum"));
+            	province.setDeathsNum(rs.getInt("deathsNum"));
+            	province.setTreatingNum(rs.getInt("treatingNum"));
+            	allDayData.add(province);
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+		
+		
+       return allDayData;
 
     }
 }
