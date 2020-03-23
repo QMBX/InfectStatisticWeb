@@ -19,38 +19,49 @@
 
 <div id="wrap">
     <div id="header">
-        截止 2020-02-XX XX:XX 全国数据统计
+    
+    <%
+    	List<China> chinaData = (List)request.getAttribute("chinas");
+    	China chinaToday = chinaData.get(0);
+    	China chinaYesterday = chinaData.get(1);
+    	int increaseTreating = chinaToday.getTreating() - chinaYesterday.getTreating();
+    	int increaseSuspected = chinaToday.getSuspectedNum() - chinaYesterday.getSuspectedNum();
+    	int increaseDeaths = chinaToday.getDeathsNum() - chinaYesterday.getDeathsNum();
+    	int increaseCures = chinaToday.getCuresNum() - chinaYesterday.getCuresNum();
+    %>
+    
+        截止 <%= chinaToday.getDate() %> 23:59 全国数据统计
     </div>
     <div id="info1">
         <p>
             较昨日
-            <span id="com1">-2408</span>
+            <span id="com1"><%= (increaseTreating > 0 ? "+" : "") + increaseTreating %></span>
         </p>
-        <p id="iden1">47502</p>
+        <p id="iden1"><%= chinaToday.getTreating() %></p>
         <p class="type">现存确诊</p>
     </div>
     <div id="info2">
         <p>
             较昨日
-            <span id="com2">+530</span>
+            <span id="com2"><%= (increaseSuspected > 0 ? "+" : "") + increaseSuspected %></span>
         </p>
-        <p id="iden2">2824</p>
+        <p id="iden2"><%= chinaToday.getSuspectedNum() %></p>
         <p class="type">现存疑似</p>
     </div>
     <div id="info3">
         <p>
             较昨日
-            <span id="com3">+71</span>
+            <span id="com3"><%= (increaseDeaths > 0 ? "+" : "") + increaseDeaths %></span>
         </p>
-        <p id="iden3">2666</p>
+        <p id="iden3"><%= chinaToday.getDeathsNum() %></p>
         <p class="type">死亡</p>
     </div>
     <div id="info4">
         <p>
             较昨日
-            <span id="com4">+2860</span>
+            <span id="com4"><%= (increaseCures > 0 ? "+" : "") + increaseCures %></span>
         </p>
-        <p id="iden4">27617</p>
+        <p id="iden4"><%= chinaToday.getCuresNum() %></p>
         <p class="type">治愈</p>
     </div>
 </div>
@@ -173,6 +184,7 @@
 	    	baseOption : {
 	    		timeline : {
 	    			data : [],
+	    			currentIndex : data.timeline.length - 1,
 	    		}
 	    	},
 	    	options : [],
@@ -181,6 +193,7 @@
 	    	baseOption : {
 	    		timeline : {
 	    			data : [],
+	    			currentIndex : data.timeline.length - 1,
 	    		}
 	    	},
 	    	options : [],
